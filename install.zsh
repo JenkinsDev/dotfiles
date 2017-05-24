@@ -16,7 +16,7 @@ function installOhMyZsh() {
 }
 
 function backupFile() {
-    [ -f "$1" ] && echo "Backing up $1..." && mv "$1" ~/dotfiles.backup
+        [ -f "$1" ] && echo "Backing up $1..." && mv "$1" ~/dotfiles.backup
 }
 
 function doIt() {
@@ -59,13 +59,13 @@ function doIt() {
 
 echo "Installing dotfiles...\n"
 if [[ "$1" == "--force" || "$1" == "-f" ]]; then
-	doIt
+        doIt
 else
         read "REPLY?We don't want to overwrite your files. If I find a file that I need to replace, I'll put it in a dotfiles.backup folder. Is this okay with you? (y/n) "
 
-	if [[ "$REPLY" =~ ^[Yy]$ ]]; then
-		doIt
-	fi
+        if [[ "$REPLY" =~ ^[Yy]$ ]]; then
+                doIt
+        fi
 fi
 
 unset installOhMyZsh
