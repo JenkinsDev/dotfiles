@@ -22,7 +22,7 @@ source install.sh
 
 #### Files
 
-* `~/.zsh_profile` - Used for settings that should not be stored in source control
+* `~/.zsh_profile` - Used for settings that should not be stored in source control. (i.e: Some Env Vars, ...)
 
 ### tmux
 

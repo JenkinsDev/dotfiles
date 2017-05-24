@@ -1,4 +1,4 @@
-.oh-my-zsh/*
+.oh-my-zsh/custom/themes/spaceship.zsh-theme
 .fuse_hidden*
 *.swp
 *.swo
