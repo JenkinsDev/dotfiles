@@ -1,0 +1,6 @@
+.oh-my-zsh/*
+.fuse_hidden*
+*.swp
+*.swo
+.ropeproject/*
+.zsh_profile
