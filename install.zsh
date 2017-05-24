@@ -15,10 +15,18 @@ function installOhMyZsh() {
         fi
 }
 
-function doIt() {
-        echo "\n"
+function backupFile() {
+    [ -f "$1" ] && echo "Backing up $1..." && mv "$1" ~/dotfiles.backup
+}
 
+function doIt() {
+        echo "\nBacking Up Dotfiles..."
         [ ! -d ~/dotfiles.backup/ ] && echo "Making backup directory..." && mkdir ~/dotfiles.backup/
+        backupFile ~/.tmux.conf
+        backupFile ~/.vimrc
+        backupFile ~/.vimrc_background
+        backupFile ~/.zshrc
+        echo "\n"
 
         if [ ! -d ~/.vim/bundle/ ]; then
                 echo "Installing Vundle..."
