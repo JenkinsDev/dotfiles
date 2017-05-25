@@ -27,6 +27,7 @@ autocmd Filetype python setlocal tabstop=4 shiftwidth=4
 set rtp+=~/.vim/bundle/Vundle.vim       
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'			" Vundle Plugin - let vundle update itself
+
 Plugin 'sheerun/vim-polyglot.git'		" A seriously fast, and vast, language pack
 Plugin 'vim-syntastic/syntastic.git'		" Syntax Checking
 Plugin 'tpope/vim-surround.git'			" For Easy Editing Of HTML, XML, Changing Surrounding Quotes, etc.
@@ -40,10 +41,6 @@ Plugin 'scrooloose/nerdtree.git'                " Tree explorer for vim; a lot o
 Plugin 'rking/ag.vim'				" The Silver Searcher vim plugin
 
 Plugin 'editorconfig/editorconfig-vim'          " Editorconfig Vim Plugins (use .editorconfig files)
-
-Plugin 'pangloss/vim-javascript'                " VIM JavaScript - Used By Vim JSX
-Plugin 'mxw/vim-jsx'                            " React/JSX Plugin For Vim
-Plugin 'leafgarland/typescript-vim'             " Typescript Plugin
 
 Plugin 'python-mode/python-mode.git'		" Python Mode, DUH
 call vundle#end()
@@ -60,6 +57,8 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
+""" Polyglot Configuration
+let g:polyglot_disabled = ['python'] " Use Python Mode over Polyglot's python package
 
 """ NERDTree Configuration
 let g:NERDTreeDirArrowExpandable = '▶'
