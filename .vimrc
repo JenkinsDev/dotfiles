@@ -1,11 +1,11 @@
 syntax on       " Turn on syntaix highlight, y'all!
 filetype on     " Allow vim to figure out the filetype we're opening
 
+set autoindent          " Allow for that beautiful autoindent
 set nocompatible	" No Vi compatibility mode.
 set splitright		" Force vim to open files to the right
 set number		" Show line numbers when editing a file
-set expandtab		" Use spaces instead of tabs
-
+set expandtab		" Use spaces instead of tabs 
 " Timeout for listening to maps and key-strokes for commands.
 " mapping timeout: 1 second
 " key stroke timeout: 0.1 seconds
@@ -13,7 +13,8 @@ set timeoutlen=1000 ttimeoutlen=100
 
 
 """""" Filetype settings - indention, etc.
-autocmd BufNewFile,BufRead *.ts setlocal filetype=typescript " Open .ts as typescript
+autocmd BufNewFile,BufRead *.ts setlocal filetype=typescript            " Open .ts as typescript
+autocmd BufNewFile,BufRead *.js setlocal filetype=javascript.jsx        " Default to JSX
 
 autocmd Filetype css setlocal tabstop=2 shiftwidth=2
 autocmd Filetype html setlocal tabstop=2 shiftwidth=2
@@ -58,7 +59,8 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
 """ Polyglot Configuration
-let g:polyglot_disabled = ['python'] " Use Python Mode over Polyglot's python package
+let g:polyglot_disabled = ['python']    " Use Python Mode over Polyglot's python package
+let g:jsx_ext_required = 0              " Parse .js files as possible JSX as well
 
 """ NERDTree Configuration
 let g:NERDTreeDirArrowExpandable = '▶'
@@ -69,7 +71,7 @@ autocmd vimenter * NERDTree
 let g:ycm_python_binary_path = '/usr/bin/python3'
 
 """ Colorscheme Configuration
-let base16colorspace=256
+let base16colorspace = 256
 source ~/.vimrc_background
 
 """ Airline Configuration
@@ -77,9 +79,6 @@ let g:airline_theme = 'bubblegum'
 let g:airline_section_a = airline#section#create(['mode', '', 'branch'])
 let g:airline_section_b = '%{strftime("%c")}'
 let g:airline_section_y = 'BN: %{bufnr("%")}'
-
-""" JSX Configuration
-let g:jsx_ext_required = 0 " Parse .js files as possible JSX as well
 
 
 """""" Abbreviations
@@ -89,17 +88,6 @@ iabbrev tehn then
 iabbrev adn and
 iabbrev sjx jsx
 iabbrev teh the
-
-
-"""""" Auto Indent On Save
-autocmd BufWritePre *.html :normal gg=G``
-autocmd BufWritePre *.js :normal gg=G``
-autocmd BufWritePre *.ts :normal gg=G``
-autocmd BufWritePre *.jsx :normal gg=G``
-autocmd BufWritePre *.css :normal gg=G``
-autocmd BufWritePre *.json :normal gg=G``
-autocmd BufWritePre *.go :normal gg=G``
-autocmd BufWritePre *.py :normal gg=G``
 
 
 """""" FINALIZATION

@@ -26,6 +26,7 @@ function doIt() {
         backupFile ~/.vimrc
         backupFile ~/.vimrc_background
         backupFile ~/.zshrc
+        backupFile ~/.tern-config
         echo "\n"
 
         if [ ! -d ~/.vim/bundle/ ]; then
