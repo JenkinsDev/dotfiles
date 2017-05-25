@@ -79,6 +79,9 @@ let g:airline_section_a = airline#section#create(['mode', '', 'branch'])
 let g:airline_section_b = '%{strftime("%c")}'
 let g:airline_section_y = 'BN: %{bufnr("%")}'
 
+""" JSX Configuration
+let g:jsx_ext_required = 0 " Parse .js files as possible JSX as well
+
 
 """""" Abbreviations
 iabbrev hmtl html
