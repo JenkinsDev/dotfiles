@@ -29,7 +29,7 @@ function doIt() {
         echo "\n"
 
         if [ ! -d ~/.vim/bundle/ ]; then
-                echo "Installing Vundle..."
+                echo "\nInstalling Vundle..."
                 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
         fi
 
@@ -39,7 +39,8 @@ function doIt() {
         fi
 
         echo "Installing Spaceship ZSH Theme..."
-        curl https://raw.githubusercontent.com/denysdovhan/spaceship-zsh-theme/master/spaceship.zsh -o ./.oh-my-zsh/custom/themes/spaceship.zsh-theme
+        curl https://raw.githubusercontent.com/denysdovhan/spaceship-zsh-theme/master/spaceship.zsh \
+                -o ./.oh-my-zsh/custom/themes/spaceship.zsh-theme
 
         rsync --exclude ".git/" \
                 --exclude ".gitignore" \
@@ -50,6 +51,14 @@ function doIt() {
 
         echo "Installing vim plugins with Vundle... You may see errors, just press ENTER."
         vim +PluginInstall +qall
+
+        ycmInstall=( ~/.vim/bundle/YouCompleteMe/install.py )
+        (( $+commands[go] )) && ycmInstall+=( --gocode-completer )
+        (( $+commands[xbuild] )) && ycmInstall+=( --omnisharp-completer )
+        (( $+commands[node] )) && (( $+commands[npm] )) && ycmInstall+=( --tern-completer )
+        (( $+commands[rustc] )) && (( $+commands[cargo] )) && ycmInstall+=( --racer-completer )
+        echo "Installing YouCompleteMe... Command: ${ycmInstall}"
+        "${ycmInstall[@]}" # Run installer with all options set
         
         echo "Sourcing new .zshrc file..."
         source ~/.zshrc
