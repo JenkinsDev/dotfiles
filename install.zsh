@@ -78,4 +78,5 @@ else
 fi
 
 unset installOhMyZsh
+unset backupFile
 unset doIt
