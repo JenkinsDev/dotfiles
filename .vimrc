@@ -15,6 +15,7 @@ set timeoutlen=1000 ttimeoutlen=100
 """""" Filetype settings - indention, etc.
 autocmd BufNewFile,BufRead *.ts setlocal filetype=typescript            " Open .ts as typescript
 autocmd BufNewFile,BufRead *.js setlocal filetype=javascript.jsx        " Default to JSX
+autocmd BufNewFile,BufRead *.jsx setlocal filetype=javascript.jsx       " Bugged for some reason, so hard-code fix
 
 autocmd Filetype css setlocal tabstop=2 shiftwidth=2
 autocmd Filetype html setlocal tabstop=2 shiftwidth=2
