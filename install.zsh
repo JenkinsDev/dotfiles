@@ -29,7 +29,7 @@ function doIt() {
         backupFile ~/.tern-config
         echo "\n"
 
-        if [ ! -d ~/.vim/bundle/ ]; then
+        if [[ ! -d ~/.vim/bundle/ || ! -d ~/.vim/bundle/Vundle.vim ]]; then
                 echo "\nInstalling Vundle..."
                 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
         fi
