@@ -39,9 +39,9 @@ function doIt() {
                 git clone https://github.com/chriskempson/base16-shell.git ~/.config/base16-shell
         fi
 
-        echo "Installing Spaceship ZSH Theme..."
-        curl https://raw.githubusercontent.com/denysdovhan/spaceship-zsh-theme/master/spaceship.zsh \
-                -o ./.oh-my-zsh/custom/themes/spaceship.zsh-theme
+        echo "Installing Spaceship ZSH Theme to $HOME/.oh-my-zsh/themes/spaceship-prompt..."
+        git clone https://github.com/denysdovhan/spaceship-prompt.git "$HOME/.oh-my-zsh/custom/themes/spaceship-prompt"
+        ln -s "$HOME/.oh-my-zsh/custom/themes/spaceship-prompt/spaceship.zsh-theme" "$HOME/.oh-my-zsh/custom/themes/spaceship.zsh-theme"
 
         rsync --exclude ".git/" \
                 --exclude ".gitignore" \

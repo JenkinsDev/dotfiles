@@ -8,8 +8,9 @@ setopt GLOB_COMPLETE # Expand any large globs
 setopt PUSHD_MINUS   # ^
 
 KEYTIMEOUT=1
-ZSH_THEME="spaceship"
 plugins=(git python docker)
+SPACESHIP_ROOT="$HOME/.oh-my-zsh/custom/themes/spaceship-prompt"
+ZSH_THEME="spaceship"
 
 ## Load ZSH
 source $ZSH/oh-my-zsh.sh
@@ -20,8 +21,8 @@ source $ZSH/oh-my-zsh.sh
 
 
 #### Base16 Shell Setup
-BASE16_SHELL=$HOME/.config/base16-shell/
-[ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"
+BASE16_SHELL="$HOME/.config/base16-shell/"
+[ -n "$PS1" ] && [ -s "$BASE16_SHELL/profile_helper.sh" ] && eval "$($BASE16_SHELL/profile_helper.sh)"
 
 
 #### PATH Additions
@@ -32,5 +33,5 @@ BASE16_SHELL=$HOME/.config/base16-shell/
 
 
 #### Sourcing Some Files
-[ -f "/usr/bin/virtualenvwrapper.sh" ] && source /usr/bin/virtualenvwrapper.sh
-[ -f "$HOME/.zsh_profile" ] && source $HOME/.zsh_profile
+[ -f "/usr/bin/virtualenvwrapper.sh" ] && source "/usr/bin/virtualenvwrapper.sh"
+[ -f "$HOME/.zsh_profile" ] && source "$HOME/.zsh_profile"

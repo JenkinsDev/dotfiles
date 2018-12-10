@@ -71,10 +71,6 @@ autocmd vimenter * NERDTree
 """ YouCompleteMe Configuration
 let g:ycm_python_binary_path = '/usr/bin/python3'
 
-""" Colorscheme Configuration
-let base16colorspace = 256
-source ~/.vimrc_background
-
 """ Airline Configuration
 let g:airline_theme = 'bubblegum'
 let g:airline_section_a = airline#section#create(['mode', '', 'branch'])
