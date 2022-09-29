@@ -1,5 +1,6 @@
 syntax on       " Turn on syntaix highlight, y'all!
 filetype on     " Allow vim to figure out the filetype we're opening
+filetype indent plugin on
 
 set autoindent          " Allow for that beautiful autoindent
 set nocompatible	" No Vi compatibility mode.
@@ -20,7 +21,7 @@ autocmd BufNewFile,BufRead *.jsx setlocal filetype=javascript.jsx       " Bugged
 autocmd Filetype css setlocal tabstop=2 shiftwidth=2
 autocmd Filetype html setlocal tabstop=2 shiftwidth=2
 autocmd Filetype javascript setlocal tabstop=2 shiftwidth=2
-autocmd Filetype typescript setlocal tabstop=4 shiftwidth=4
+autocmd Filetype typescript setlocal tabstop=2 shiftwidth=2
 autocmd Filetype json setlocal tabstop=2 shiftwidth=2
 autocmd Filetype python setlocal tabstop=4 shiftwidth=4
 
@@ -33,9 +34,7 @@ Plugin 'VundleVim/Vundle.vim'			" Vundle Plugin - let vundle update itself
 Plugin 'sheerun/vim-polyglot.git'		" A seriously fast, and vast, language pack
 Plugin 'vim-syntastic/syntastic.git'		" Syntax Checking
 Plugin 'tpope/vim-surround.git'			" For Easy Editing Of HTML, XML, Changing Surrounding Quotes, etc.
-Plugin 'Valloric/YouCompleteMe.git'		" Gnarly completion engine!
 
-Plugin 'chriskempson/base16-vim.git'		" Add the base16-vim color schemes
 Plugin 'vim-airline/vim-airline.git'		" Lean & Mean Status Bar
 Plugin 'vim-airline/vim-airline-themes.git'	" Themes for the vim airline plugin
 
@@ -45,6 +44,9 @@ Plugin 'rking/ag.vim'				" The Silver Searcher vim plugin
 Plugin 'editorconfig/editorconfig-vim'          " Editorconfig Vim Plugins (use .editorconfig files)
 
 Plugin 'python-mode/python-mode.git'		" Python Mode, DUH
+Plugin 'github/copilot.vim'
+
+Plugin 'iamcco/markdown-preview.nvim'
 call vundle#end()
 
 
@@ -76,16 +78,6 @@ let g:airline_theme = 'bubblegum'
 let g:airline_section_a = airline#section#create(['mode', '', 'branch'])
 let g:airline_section_b = '%{strftime("%c")}'
 let g:airline_section_y = 'BN: %{bufnr("%")}'
-
-
-"""""" Abbreviations
-iabbrev hmtl html
-iabbrev waht what
-iabbrev tehn then
-iabbrev adn and
-iabbrev sjx jsx
-iabbrev teh the
-
 
 """""" FINALIZATION
 filetype plugin indent on

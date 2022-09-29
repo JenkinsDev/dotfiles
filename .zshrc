@@ -15,10 +15,15 @@ ZSH_THEME="spaceship"
 ## Load ZSH
 source $ZSH/oh-my-zsh.sh
 
+# Base16 Shell
+BASE16_SHELL="$HOME/.config/base16-shell/"
+[ -n "$PS1" ] && \
+  [ -s "$BASE16_SHELL/profile_helper.sh" ] && \
+    eval "$("$BASE16_SHELL/profile_helper.sh")"
+
 
 #### Aliases
-(( $+commands[npm5] )) && alias npm='npm5'
-
+alias vim=nvim;
 
 #### Base16 Shell Setup
 BASE16_SHELL="$HOME/.config/base16-shell/"
@@ -30,8 +35,16 @@ BASE16_SHELL="$HOME/.config/base16-shell/"
 [ -d "/usr/local/android-studio/bin" ] && PATH+=":/usr/local/android-studio/bin/"
 [ -d "$HOME/Android/Sdk/tools" ] && PATH+=":$HOME/Android/Sdk/tools"
 [ -d "/usr/local/mysql/bin" ] && PATH+=":/usr/local/mysql/bin"
+[ -d "$HOME/.deno/bin" ] && PATH+=":$HOME/.deno/bin"
+[ -d "$HOME/.fly/bin" ] && PATH+=":$HOME/.fly/bin"
+[ -d "$HOME/.rbenv/bin" ] && PATH+=":$HOME/.rbenv/bin"
+[ -d "/mnt/c/Program Files/Unity/Hub/Editor/2021.3.9f1/Editor" ] && PATH+=":/mnt/c/Program Files/Unity/Hub/Editor/2021.3.9f1/Editor"
 
 
-#### Sourcing Some Files
-[ -f "/usr/bin/virtualenvwrapper.sh" ] && source "/usr/bin/virtualenvwrapper.sh"
 [ -f "$HOME/.zsh_profile" ] && source "$HOME/.zsh_profile"
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+eval "$(rbenv init - zsh)";
