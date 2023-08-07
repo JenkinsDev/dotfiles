@@ -1,5 +1,4 @@
-# JenkinsDev’s dotfiles (originally heavily influenced by [Mathias' dotfiles](https://github.com/mathiasbynens/dotfiles))
-
+# dotfiles
 
 ## Installation
 
@@ -32,26 +31,3 @@ To update, `cd` into your local `dotfiles` repository and then `source install.s
 * Change Pane (Right): `M-l`
 * Change Pane (Down): `M-j`
 * Change Pane (Up): `M-k`
-
-### Vim
-
-#### Plugins
-* [Vundle](https://github.com/VundleVim/Vundle.vim)
-* [Vim Polyglot](https://github.com/sheerun/vim-polyglot)
-* [Syntastic](https://github.com/vim-syntastic/syntastic)
-* [Vim Surround](https://github.com/tpope/vim-surround)
-* [YouCompleteMe](https://github.com/Valloric/YouCompleteMe)
-* [Base16 Vim](https://github.com/chriskempson/base16-vim)
-* [Vim Airline](https://github.com/vim-airline/vim-airline)
-* [Vim Airline Themes](https://github.com/vim-airline/vim-airline-themes)
-* [NerdTREE](https://github.com/scrooloose/nerdtree)
-* [Ag](https://github.com/rking/ag.vim)
-* [Editorconfig](https://github.com/editorconfig/editorconfig-vim)
-* [JavaScript](https://github.com/pangloss/vim-javascript)
-* [JSX](https://github.com/mxw/vim-jsx)
-* [Typescript](https://github.com/leafgarland/typescript-vim)
-* [Python](https://github.com/python-mode/python-mode)
-
-
-## Suggestions/improvements [welcome](https://github.com/JenkinsDev/dotfiles/issues)!
-
