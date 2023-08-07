@@ -24,6 +24,9 @@ BASE16_SHELL="$HOME/.config/base16-shell/"
 
 #### Aliases
 alias vim=nvim;
+alias Unity="Unity.exe";
+alias unity="Unity";
+
 
 #### Base16 Shell Setup
 BASE16_SHELL="$HOME/.config/base16-shell/"
@@ -39,6 +42,8 @@ BASE16_SHELL="$HOME/.config/base16-shell/"
 [ -d "$HOME/.fly/bin" ] && PATH+=":$HOME/.fly/bin"
 [ -d "$HOME/.rbenv/bin" ] && PATH+=":$HOME/.rbenv/bin"
 [ -d "/mnt/c/Program Files/Unity/Hub/Editor/2021.3.9f1/Editor" ] && PATH+=":/mnt/c/Program Files/Unity/Hub/Editor/2021.3.9f1/Editor"
+[ -d "/usr/local/chromedriver" ] && PATH+=":/usr/local/chromedriver"
+[ -d "$HOME/nvim/bin" ] && PATH+=":/$HOME/nvim/bin"
 
 
 [ -f "$HOME/.zsh_profile" ] && source "$HOME/.zsh_profile"
@@ -48,3 +53,7 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 eval "$(rbenv init - zsh)";
+. $HOME/.asdf/asdf.sh # asdf version manager
+. $HOME/.asdf/completions/asdf.bash # asdf version manager completions
+
+source $HOME/.profile
