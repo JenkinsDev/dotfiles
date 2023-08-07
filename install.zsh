@@ -39,10 +39,6 @@ function doIt() {
                 git clone https://github.com/chriskempson/base16-shell.git ~/.config/base16-shell
         fi
 
-        echo "Installing Spaceship ZSH Theme to $HOME/.oh-my-zsh/themes/spaceship-prompt..."
-        git clone https://github.com/denysdovhan/spaceship-prompt.git "$HOME/.oh-my-zsh/custom/themes/spaceship-prompt"
-        ln -s "$HOME/.oh-my-zsh/custom/themes/spaceship-prompt/spaceship.zsh-theme" "$HOME/.oh-my-zsh/custom/themes/spaceship.zsh-theme"
-
         rsync --exclude ".git/" \
                 --exclude ".gitignore" \
                 --exclude "install.zsh" \
@@ -52,14 +48,6 @@ function doIt() {
 
         echo "Installing vim plugins with Vundle... You may see errors, just press ENTER."
         vim +PluginInstall +qall
-
-        ycmInstall=( ~/.vim/bundle/YouCompleteMe/install.py )
-        (( $+commands[go] )) && ycmInstall+=( --gocode-completer )
-        (( $+commands[xbuild] )) && ycmInstall+=( --omnisharp-completer )
-        (( $+commands[node] )) && (( $+commands[npm] )) && ycmInstall+=( --tern-completer )
-        (( $+commands[rustc] )) && (( $+commands[cargo] )) && ycmInstall+=( --racer-completer )
-        echo "Installing YouCompleteMe... Command: ${ycmInstall}"
-        "${ycmInstall[@]}" # Run installer with all options set
         
         echo "Sourcing new .zshrc file..."
         source ~/.zshrc
