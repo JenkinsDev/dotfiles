@@ -9,28 +9,39 @@ setopt PUSHD_MINUS   # ^
 
 KEYTIMEOUT=1
 plugins=(git python docker)
-SPACESHIP_ROOT="$HOME/.oh-my-zsh/custom/themes/spaceship-prompt"
-ZSH_THEME="spaceship"
 
 ## Load ZSH
 source $ZSH/oh-my-zsh.sh
 
-# Base16 Shell
-BASE16_SHELL="$HOME/.config/base16-shell/"
-[ -n "$PS1" ] && \
-  [ -s "$BASE16_SHELL/profile_helper.sh" ] && \
-    eval "$("$BASE16_SHELL/profile_helper.sh")"
+# custom theme
+local git_info='$(git_prompt_info)'
+ZSH_THEME_GIT_PROMPT_PREFIX="%{$FG[014]%}🌳"
+ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%}"
+ZSH_THEME_GIT_PROMPT_DIRTY=" %{$FG[129]%}x"
+ZSH_THEME_GIT_PROMPT_CLEAN=" %{$FG[082]%}o"
 
+PROMPT="%{$FG[069]%}┌─[%{$reset_color%}\
+%{$FG[061]%}%n %{$FG[135]%}📂%~%{$reset_color%}\
+%{$FG[069]%}] -> %{$reset_color%}\
+%{$FG[069]%}[%{$reset_color%}\
+${git_info}\
+%{$FG[069]%}]%{$reset_color%}\
+
+%{$FG[069]%}└─$% %{$reset_color%} "
+
+RPROMPT="%{$FG[069]%}[\
+%{$reset_color%}%*\
+%{$FG[069]%}]\
+%{$reset_color%}"
+
+PS2=' ... '
+# end custom theme
 
 #### Aliases
 alias vim=nvim;
 alias Unity="Unity.exe";
 alias unity="Unity";
-
-
-#### Base16 Shell Setup
-BASE16_SHELL="$HOME/.config/base16-shell/"
-[ -n "$PS1" ] && [ -s "$BASE16_SHELL/profile_helper.sh" ] && eval "$($BASE16_SHELL/profile_helper.sh)"
+alias arduino="arduino-cli";
 
 
 #### PATH Additions
@@ -44,7 +55,7 @@ BASE16_SHELL="$HOME/.config/base16-shell/"
 [ -d "/mnt/c/Program Files/Unity/Hub/Editor/2021.3.9f1/Editor" ] && PATH+=":/mnt/c/Program Files/Unity/Hub/Editor/2021.3.9f1/Editor"
 [ -d "/usr/local/chromedriver" ] && PATH+=":/usr/local/chromedriver"
 [ -d "$HOME/nvim/bin" ] && PATH+=":/$HOME/nvim/bin"
-
+[ -d "$HOME/bin" ] && PATH+=":/$HOME/bin"
 
 [ -f "$HOME/.zsh_profile" ] && source "$HOME/.zsh_profile"
 
@@ -57,3 +68,19 @@ eval "$(rbenv init - zsh)";
 . $HOME/.asdf/completions/asdf.bash # asdf version manager completions
 
 source $HOME/.profile
+
+if [ -f "$HOME/google-cloud-sdk/path.zsh.inc" ]; then . "$HOME/google-cloud-sdk/path.zsh.inc"; fi
+if [ -f "$HOME/google-cloud-sdk/completion.zsh.inc" ]; then . "$HOME/google-cloud-sdk/completion.zsh.inc"; fi
+
+
+# Load Angular CLI autocompletion.
+source <(ng completion script)
+
+alias amd_docker_run='docker run -it --group-add=video'
+
+# bun completions
+[ -s "/home/jenkinsdev/.bun/_bun" ] && source "/home/jenkinsdev/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
