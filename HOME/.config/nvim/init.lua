@@ -1,9 +1,11 @@
-lua << EOF
-  require'lspconfig'.ts_ls.setup{}
-  require("config.lazy")
-
 vim.cmd('syntax on') -- Turn on syntax highlight, y'all!
 vim.cmd('filetype on') -- Allow vim to figure out the filetype we're opening
+
+require("config.lazy")
+vim.lsp.enable('ts_ls')
+vim.lsp.enable('ruby_lsp')
+vim.lsp.enable('kotlin_language_server')
+vim.lsp.enable('pyrefly')
 
 vim.opt.autoindent = true -- Allow for that beautiful autoindent
 vim.opt.compatible = false -- No Vi compatibility mode.
@@ -39,6 +41,7 @@ local filetypes = {
     json = 2,
     yaml = 2,
     python = 4,
+    kotlin = 2,
     rust = 4,
     markdown = 2,
     ruby = 2,
@@ -77,9 +80,3 @@ vim.api.nvim_create_autocmd("VimEnter", {
 vim.api.nvim_create_autocmd("VimEnter", {
     command = "hi NormalSB guibg=NONE ctermbg=NONE"
 })
-
-EOF
-
-" set runtimepath^=~/.vim runtimepath+=~/.vim/after
-" let &packpath=&runtimepath
-" source ~/.vimrc

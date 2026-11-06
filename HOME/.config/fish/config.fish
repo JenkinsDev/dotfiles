@@ -1,13 +1,9 @@
-if status is-interactive
-    # Commands to run in interactive sessions can go here
-end
-
-# local-system specific configuration, if it exists
+# Keep machine-specific settings and secrets in ~/.fishrc.
 if test -f "$HOME/.fishrc"
     source "$HOME/.fishrc"
 end
-
-# initialize rvm if it is installed
-if type -q rvm
-    rvm default
+for dir in "$HOME/.opencode/bin" "$HOME/.bun/bin" "$HOME/.lmstudio/bin" "$HOME/.grok/bin"
+    if test -d "$dir"
+        fish_add_path "$dir"
+    end
 end

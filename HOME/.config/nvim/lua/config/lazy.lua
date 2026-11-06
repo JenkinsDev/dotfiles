@@ -24,19 +24,39 @@ vim.g.maplocalleader = "\\"
 -- Setup lazy.nvim
 require("lazy").setup({
   spec = {
-    -- import your plugins
+    {
+      "folke/snacks.nvim",
+      priority = 1000,
+      lazy = false,
+      --type snacks.Config
+      opts = {
+        -- your configuration comes here
+        -- or leave it empty to use the default settings
+        -- refer to the configuration section below
+        bigfile = { enabled = true },
+        dashboard = { enabled = true },
+        explorer = { enabled = true },
+        indent = { enabled = true },
+        input = { enabled = true },
+        picker = { enabled = true },
+        notifier = { enabled = true },
+        quickfile = { enabled = true },
+        scope = { enabled = true },
+        --scroll = { enabled = true },
+        statuscolumn = { enabled = true },
+        words = { enabled = true },
+      },
+    },
     {"rust-lang/rust.vim"},
     {"peitalin/vim-jsx-typescript"},
     {"nvim-lua/plenary.nvim"},
     {"BurntSushi/ripgrep"},
     {"scrooloose/nerdtree"},
-    {"iamcco/markdown-preview.nvim"},
     {"nvim-treesitter/nvim-treesitter"},
-    {"EdenEast/nightfox.nvim"},
+    {"rebelot/kanagawa.nvim", opts = {undercurl = true}},
     {"neovim/nvim-lspconfig"},
     {"hrsh7th/cmp-nvim-lsp"},
     {"L3MON4D3/LuaSnip"},
-    {"VonHeikemen/lsp-zero.nvim"},
     {"folke/trouble.nvim", opts = {}, cmd = "Trouble", keys = {
       {
         "<leader>xx",
@@ -76,8 +96,8 @@ require("lazy").setup({
           auto_trigger = true,
           hide_during_completion = true,
           debounce = 75,
-          mapping = {
-            accept = "<Tab>"
+          keymap = {
+            accept = "<M-l>"
           }
         }
       })
@@ -141,89 +161,6 @@ require("lazy").setup({
         vim.b.copilot_suggestion_hidden = false
       end)
     end},
-    {
-      "yetone/avante.nvim",
-      event = "VeryLazy",
-      lazy = false,
-      version = false,
-      build = "make",
-      opts = {
-        provider = "copilot",
-        auto_suggestions_provider = 'claude',
-        claude = {
-          endpoint = "https://api.anthropic.com",
-          model = "claude-3-5-sonnet-20241022",
-          temperature = 0,
-          max_tokens = 4096
-        },
-        behaviour = {
-          auto_suggestions = false, -- Experimental stage
-          auto_set_highlight_group = true,
-          auto_set_keymaps = true,
-          auto_apply_diff_after_generation = false,
-          support_paste_from_clipboard = false,
-        },
-        mappings = {
-          --- @class AvanteConflictMappings
-          diff = {
-            ours = "co",
-            theirs = "ct",
-            all_theirs = "ca",
-            both = "cb",
-            cursor = "cc",
-            next = "]x",
-            prev = "[x",
-          },
-          suggestion = {
-            accept = "<M-l>",
-            next = "<M-]>",
-            prev = "<M-[>",
-            dismiss = "<C-]>",
-          },
-          jump = {
-            next = "]]",
-            prev = "[[",
-          },
-          submit = {
-            normal = "<CR>",
-            insert = "<C-s>",
-          },
-          sidebar = {
-            switch_windows = "<Tab>",
-            reverse_switch_windows = "<S-Tab>",
-          },
-        },
-        hints = { enabled = true },
-      },
-      dependencies = {
-        "nvim-treesitter/nvim-treesitter",
-        "stevearc/dressing.nvim",
-        "nvim-lua/plenary.nvim",
-        "MunifTanjim/nui.nvim",
-        "hrsh7th/nvim-cmp",
-        "nvim-tree/nvim-web-devicons",
-        "zbirenbaum/copilot.lua",
-        {
-          "HakonHarnes/img-clip.nvim",
-          event = "VeryLazy",
-          opts = {
-            default = {
-              embed_image_as_base64 = false,
-              prompt_for_file_name = false,
-              drag_and_drop = { insert_mode = true, },
-             },
-           },
-        },
-        {
-          -- Make sure to set this up properly if you have lazy=true
-          'MeanderingProgrammer/render-markdown.nvim',
-          opts = {
-            file_types = { "markdown", "Avante" },
-          },
-          ft = { "markdown", "Avante" },
-        }
-      }
-    },
     {"windwp/nvim-autopairs"},
     {"nvim-telescope/telescope.nvim"},
     {"salkin-mada/openscad.nvim", dependencies = {"L3MON4D3/LuaSnip"}, config = function()
@@ -234,10 +171,10 @@ require("lazy").setup({
 
   -- Configure any other settings here. See the documentation for more details.
   -- colorscheme that will be used when installing plugins.
-  install = { colorscheme = { "nightfox" } },
+  install = { colorscheme = { "kanagawa" } },
 
   -- automatically check for plugin updates
   checker = { enabled = true },
 })
 
-vim.cmd("colorscheme nightfox")
+vim.cmd("colorscheme kanagawa-wave")
